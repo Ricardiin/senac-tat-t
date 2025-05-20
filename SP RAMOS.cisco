@@ -1,0 +1,21 @@
+!ena
+enable
+!config
+configure terminal
+hostname SP
+interface fastethernet 0/0
+no shutdown
+    ip address 192.168.10.1
+    description PORTA LAN de SP
+EXIT
+interface interface Serial 0/0
+ip address 11.0.0.1 255.0.0.0
+description PORTA WAN de SP
+Clock rate 128000 
+bandwidth 128
+EXIT
+router rip 
+network 11.0.0.0
+network 192.168.10.0
+ctrz
+copy run star
